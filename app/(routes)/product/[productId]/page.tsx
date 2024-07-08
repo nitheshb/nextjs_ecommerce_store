@@ -1,9 +1,13 @@
+
+
 import ProductList from '@/components/product-list'
 import Gallery from '@/components/gallery';
 import Info from '@/components/info';
 import getProduct from '@/actions/get-product';
 import getProducts from '@/actions/get-products';
 import Container from '@/components/ui/container';
+
+import Productinfo from './product-info';
 
 export const revalidate = 0;
 
@@ -25,6 +29,8 @@ const ProductPage: React.FC<ProductPageProps> = async ({
     return null;
   }
 
+
+
   return (
     <div className="bg-white">
       <Container>
@@ -38,6 +44,15 @@ const ProductPage: React.FC<ProductPageProps> = async ({
           <hr className="my-10" />
           <ProductList title="Related Items" items={suggestedProducts} />
         </div>
+
+
+
+
+
+      <Productinfo/>
+
+
+
       </Container>
     </div>  
   )
