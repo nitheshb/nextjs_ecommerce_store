@@ -1,9 +1,22 @@
 import { steps } from '@/app/Data';
 import React from 'react';
-import Image from 'next/image';
+//import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 
-const ProcessStep = ({ title, description, imageSrc }) => (
+
+
+
+interface ProcessStepProps {
+  title: string;
+  description: string;
+  imageSrc: any;
+}
+
+
+
+
+const ProcessStep: React.FC<ProcessStepProps> = ({ title, description, imageSrc }) => (
   <div className="flex flex-col items-center p-6 bg-gray-100 rounded-lg">
     <div className="w-full h-48 relative mb-4">
       <Image 
