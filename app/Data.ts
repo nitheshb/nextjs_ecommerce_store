@@ -43,6 +43,11 @@ import m4 from '../components/img/m4.png';
 
 
 
+import man1 from '../components/img/man1.png';
+
+
+
+
 
 
 export const categories = [
@@ -256,3 +261,30 @@ export const stores = [
 ]
 
 
+
+
+// data.ts
+
+
+export const slides = [
+  {
+    id: 1,
+    title: "Order Products for delivery to your door",
+    subtitle: "Whatever you want from local stores, brought right to your door.",
+    image: man1
+  },
+  {
+    id: 2,
+    title: "Fast and Reliable Delivery",
+    subtitle: "Get your products quickly and efficiently.",
+    image: d1
+  },
+  {
+    id: 3,
+    title: "Wide Range of Products",
+    subtitle: "Choose from a variety of local stores and products.",
+    image: d3
+  }
+];
+
+export const backgroundImage = '/your-background-image.jpg';

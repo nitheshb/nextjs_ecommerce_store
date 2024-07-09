@@ -5,7 +5,7 @@ import ProcessSteps from "@/components/ProcessSteps";
 import ProductList from "@/components/product-list";
 import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";
-import { data } from "../Data";
+import { backgroundImage, data, slides } from "../Data";
 import DeliverySceneWithStats from "@/components/DeliverySceneWithStats";
 import FAQSection from "@/components/FAQSection";
 import FeatureList from "@/components/FeatureList";
@@ -25,7 +25,7 @@ const HomePage = async () => {
   return (
     <>
     <Nav/>
-    <Header/>
+    <Header slides={slides} backgroundImage={backgroundImage} />
     <Container>
       <div className="space-y-10 pb-10">
         <Billboard 

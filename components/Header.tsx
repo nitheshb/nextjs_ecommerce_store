@@ -1,33 +1,22 @@
- "use client"
+"use client";
 
 import { SetStateAction, useState, useEffect } from 'react';
-import Image from 'next/image';
-import d1 from '../components/img/d1.png';
-import man1 from '../components/img/man1.png';
-import d3 from '../components/img/d3.png';
+import Image, { StaticImageData } from 'next/image';
+import { slides, backgroundImage } from '../app/Data'; 
 
-const slides = [
-  {
-    id: 1,
-    title: "Order Products for delivery to your door",
-    subtitle: "Whatever you want from local stores, brought right to your door.",
-    image: man1
-  },
-  {
-    id: 2,
-    title: "Fast and Reliable Delivery",
-    subtitle: "Get your products quickly and efficiently.",
-    image: d1
-  },
-  {
-    id: 3,
-    title: "Wide Range of Products",
-    subtitle: "Choose from a variety of local stores and products.",
-    image: d3
-  }
-];
+interface Slide {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: StaticImageData;
+}
 
-export default function Header() {
+interface HeaderProps {
+  slides: Slide[];
+  backgroundImage: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ slides, backgroundImage }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -35,7 +24,7 @@ export default function Header() {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const goToSlide = (index: SetStateAction<number>) => {
     setCurrentSlide(index);
@@ -46,7 +35,7 @@ export default function Header() {
       <div
         className="absolute inset-0 overflow-hidden bg-fixed bg-center bg-cover"
         style={{
-          backgroundImage: `url('/your-background-image.jpg')`, 
+          backgroundImage: `url(${backgroundImage})`,
         }}
       >
         {slides.map((slide, index) => (
@@ -61,7 +50,6 @@ export default function Header() {
                 <h1 className="text-5xl font-bold mb-4 text-gray-800">{slide.title}</h1>
                 <p className="text-xl mb-8 text-gray-600">{slide.subtitle}</p>
               </div>
-
               <div className="relative w-1/2 h-full">
                 <Image
                   src={slide.image}
@@ -74,7 +62,6 @@ export default function Header() {
           </div>
         ))}
       </div>
-
       <div className="absolute bottom-10 left-10 flex space-x-2">
         {slides.map((_, index) => (
           <button
@@ -88,4 +75,6 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};
+
+export default Header;
