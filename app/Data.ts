@@ -1,4 +1,3 @@
-// footerData.ts
 
 import Logo from '../components/img/Logo.svg';
 import Twitter from '../components/img/Twitter.svg';

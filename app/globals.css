@@ -7,3 +7,9 @@ body,
 :root {
   height: 100%;
 }
+
+
+
+.custom-border-opacity {
+  border-bottom-color: rgba(255, 255, 255, 0.2); /* 20% opacity */
+}
