@@ -287,4 +287,4 @@ export const slides = [
   }
 ];
 
-export const backgroundImage = '/your-background-image.jpg';
+export const backgroundImage = '';

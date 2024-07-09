@@ -7,7 +7,12 @@ import Image from 'next/image';
 import SignInForm from './Login';
 
 
-const Nav = () => {
+interface NavProps {
+
+}
+
+
+const Nav: React.FC<NavProps> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSignInForm, setShowSignInForm] = useState(false);
 
