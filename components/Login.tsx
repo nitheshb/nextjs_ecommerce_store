@@ -1,6 +1,10 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useState, FormEvent } from 'react';
 
+import google from '../components/img/google.png'
+
+import Image from 'next/image';
+
 interface SignInFormProps {
   onSubmit: (email: string, password: string) => void;
 }
@@ -93,7 +97,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSubmit }) => {
           type="button"
           className="mt-4 w-full border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-200 flex items-center justify-center"
         >
-          <img src="/google-icon.png" alt="Google" className="w-5 h-5 mr-2" />
+          <Image src={google} alt="Google" className="w-5 h-5 mr-2" />
           CONTINUE WITH GOOGLE
         </button>
       </form>
