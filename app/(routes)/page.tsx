@@ -12,6 +12,9 @@ import FeatureList from "@/components/FeatureList";
 import Banner from "@/components/Banner";
 import Nav from "@/components/Nav";
 import Header from "@/components/Header";
+//import HomeBox from "@/components/Index";
+import Sidebar from "@/components/Sidebar";
+
 //import SignInForm from "@/components/Login";
 
 export const revalidate = 0;
@@ -24,8 +27,10 @@ const HomePage = async () => {
 
   return (
     <>
-    <Nav/>
     <Header slides={slides} backgroundImage={backgroundImage} />
+    <FeatureList />
+    <Banner/>
+    <ProcessSteps />  
     <Container>
       <div className="space-y-10 pb-10">
         {/* <Billboard 
@@ -38,11 +43,13 @@ const HomePage = async () => {
         </div>
       </div>
     </Container>
-    <FeatureList />
-    <Banner/>
+
+  
+  
+ 
     <DeliverySceneWithStats />
     <FAQSection />
-    <ProcessSteps />  
+   
     <Newsletter/>
     </>
 

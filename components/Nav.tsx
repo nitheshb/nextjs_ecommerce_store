@@ -1,20 +1,30 @@
-"use client"
+"use client";
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { socialMediaLinks } from '@/app/Data';
 import Image from 'next/image';
 import SignInForm from './Login';
+import getCategories from '@/actions/get-categories';
+import MainNav from './main-nav';
+import NavbarActions from './navbar-actions';
+import { Category } from '@/types'; 
 
-
-interface NavProps {
-
-}
-
+interface NavProps {}
 
 const Nav: React.FC<NavProps> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSignInForm, setShowSignInForm] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const data = await getCategories();
+      setCategories(data);
+    };
+
+    fetchCategories();
+  }, []);
 
   const menuItems = [
     { label: 'Home', href: '/' },
@@ -71,25 +81,12 @@ const Nav: React.FC<NavProps> = () => {
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <Link href="/" className="text-xl font-bold">
-                  Logo
+              <div className="flex-shrink-0"> 
+                <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
+                  <p className="font-bold text-xl">STORE</p>
                 </Link>
               </div>
-
-              <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-4">
-                  {menuItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              <MainNav data={categories} />
             </div>
 
             <div className="flex items-center">
@@ -97,7 +94,7 @@ const Nav: React.FC<NavProps> = () => {
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="bg-blue-500 text-white placeholder-blue-200 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-white"
+                  className="bg-white text-white placeholder-blue-200 rounded-md py-2 px-4 w-full p-2 border focus:outline-none focus:ring-2 focus:ring-white"
                 />
                 <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
                   <svg className="h-5 w-5 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
@@ -114,10 +111,8 @@ const Nav: React.FC<NavProps> = () => {
                   Login / Register
                 </Link>
                 {showSignInForm && (
-                  <div className="absolute right-0 mt-2 z-10">
-                    
+                  <div className="absolute right-0 mt-2 z-10 bg-white">
                     <SignInForm onSubmit={(email, password) => console.log(email, password)} />
-
                   </div>
                 )}
               </div>

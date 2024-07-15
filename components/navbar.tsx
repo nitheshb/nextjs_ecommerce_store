@@ -7,6 +7,7 @@ import getCategories from "@/actions/get-categories";
 
 import blackfriday1 from '../components/img/blackfriday1.png'
 import Image from 'next/image'
+import Nav from "./Nav";
 
 
 const Navbar = async () => {
@@ -48,14 +49,15 @@ const Navbar = async () => {
 </div>
 
 
-<div className="border-b">
+<div className="">
+    <Nav/>
       <Container>
-        <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
-          <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
+        <div className="">
+          {/* <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
             <p className="font-bold text-xl">STORE</p>
-          </Link>
-          <MainNav data={categories} />
-          <NavbarActions />
+          </Link> */}
+          {/* <MainNav data={categories} /> */}
+          {/* <NavbarActions /> */}
         </div>
       </Container>
     </div>
